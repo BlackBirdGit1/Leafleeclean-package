@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflee Cleaning Services - Price Guide</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
+        }
+
+        /* Custom scrollbar for the price table on mobile */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        }
+        
+        /* Make table full-width until it hits its min-width */
+        .table-responsive table {
+            min-width: 700px; /* Ensures table headers don't wrap ugly */
+        }
+
+        /* Style for disabled add-ons */
+        input[type="checkbox"]:disabled + span {
+            color: #9ca3af; /* Gray text */
+        }
+        input[type="checkbox"]:disabled {
+            background-color: #e5e7eb;
+            border-color: #d1d5db;
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main Content Container -->
+    <div class="container mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+
+        <!-- Header Section -->
+        <header class="text-center mb-12">
+            <!-- You can add your logo here -->
+            <!-- <img src="your-logo.png" alt="Leaflee Cleaning Logo" class="mx-auto h-16 w-auto mb-4"> -->
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-green-700 mb-4">
+                Leaflee Clean Services
+            </h1>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4">
+                Our Services at a Glance
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Welcome! Here is a simple, all-in-one guide to our professional cleaning services, with transparent pricing for your Savannah home.
+            </p>
+        </header>
+
+        <!-- NEW: Instant Estimate Calculator -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg shadow-lg p-6 sm:p-8">
+                <h3 class="text-3xl font-bold text-center text-green-700 mb-8">Get an Instant Estimate</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    
+                    <!-- Column 1: Home Size -->
+                    <div>
+                        <label for="homeSize" class="block text-lg font-semibold text-gray-800 mb-3">1. Select Your Home Size</label>
+                        <select id="homeSize" name="homeSize" class="w-full rounded-lg border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 text-lg p-3">
+                            <option value='{"standard": 125, "deep": 195, "moveout": 275}'>Apartment / &lt; 1,000 sq. ft.</option>
+                            <option value='{"standard": 140, "deep": 240, "moveout": 320}'>1,001 - 1,500 sq. ft.</option>
+                            <option value='{"standard": 165, "deep": 290, "moveout": 380}' selected>1,501 - 2,000 sq. ft.</option>
+                            <option value='{"standard": 190, "deep": 345, "moveout": 450}'>2,001 - 2,500 sq. ft.</option>
+                            <option value='{"standard": 220, "deep": 400, "moveout": 525}'>2,001 - 3,000 sq. ft.</option>
+                            <option value='{"standard": 0, "deep": 0, "moveout": 0}' data-custom="true">3,000+ sq. ft.</option>
+                        </select>
+                    </div>
+
+                    <!-- Column 2: Package Type -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">2. Choose Your Package</label>
+                        <div class="space-y-3">
+                            <label for="pkgStandard" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" id="pkgStandard" name="packageType" value="standard" class="h-5 w-5 text-green-600 focus:ring-green-500" checked>
+                                <span class="ml-3 text-lg text-gray-700">Standard Clean</span>
+                            </label>
+                            <label for="pkgDeep" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" id="pkgDeep" name="packageType" value="deep" class="h-5 w-5 text-teal-600 focus:ring-teal-500">
+                                <span class="ml-3 text-lg text-gray-700">Deep Clean</span>
+                            </label>
+                            <label for="pkgMoveOut" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="radio" id="pkgMoveOut" name="packageType" value="moveout" class="h-5 w-5 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-3 text-lg text-gray-700">Move-Out Clean</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Add-Ons -->
+                    <div>
+                        <label class="block text-lg font-semibold text-gray-800 mb-3">3. Select Add-Ons</label>
+                        <div class="space-y-3">
+                            <label for="addonFridge" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="addonFridge" class="addon h-5 w-5 text-green-600 rounded border-gray-300 focus:ring-green-500" value="30">
+                                <span class="ml-3 text-lg text-gray-700">Inside Refrigerator (+$30)</span>
+                            </label>
+                            <label for="addonOven" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="addonOven" class="addon h-5 w-5 text-green-600 rounded border-gray-300 focus:ring-green-500" value="35">
+                                <span class="ml-3 text-lg text-gray-700">Inside Oven (+$35)</span>
+                            </label>
+                            <label for="addonWindows" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="addonWindows" class="addon h-5 w-5 text-green-600 rounded border-gray-300 focus:ring-green-500" value="45">
+                                <span class="ml-3 text-lg text-gray-700">Interior Windows (+$45)</span>
+                            </label>
+                            <label for="addonPorch" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="addonPorch" class="addon h-5 w-5 text-green-600 rounded border-gray-300 focus:ring-green-500" value="25">
+                                <span class="ml-3 text-lg text-gray-700">Sweep Garage/Porch (+$25)</span>
+                            </label>
+                            <label for="addonLaundry" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+                                <input type="checkbox" id="addonLaundry" class="addon h-5 w-5 text-green-600 rounded border-gray-300 focus:ring-green-500" value="20">
+                                <span class="ml-3 text-lg text-gray-700">Laundry (per load) (+$20)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Display -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <div class="text-center">
+                        <span class="block text-lg font-medium text-gray-600">Your Estimated Total</span>
+                        <div id="totalEstimateDisplay" class="text-5xl font-extrabold text-green-700 mt-2">
+                            $165
+                        </div>
+                        <p id="customQuoteMessage" class="text-xl font-semibold text-blue-700 mt-4 hidden">
+                            Please call us for a custom quote on homes over 3,000 sq. ft.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- END: Instant Estimate Calculator -->
+
+        <!-- What's Included Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8">What's Included in Your Clean?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                
+                <!-- Standard Clean Card -->
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                    <h4 class="text-2xl font-bold text-green-700 mb-4">The Standard Clean</h4>
+                    <p class="text-gray-600 mb-4 italic">Your weekly or bi-weekly refresh.</p>
+                    <ul class="space-y-2 text-gray-700 flex-grow">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Dust all surfaces & ceiling fans</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Vacuum carpets & mop floors</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Wipe kitchen counters & sink</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Clean exterior of appliances</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Clean & sanitize all bathrooms</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Empty wastebaskets</li>
+                    </ul>
+                </div>
+
+                <!-- Deep Clean Card -->
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col border-2 border-teal-500">
+                    <h4 class="text-2xl font-bold text-teal-700 mb-4">The Deep Clean</h4>
+                    <p class="text-gray-600 mb-4 italic">Our top-to-bottom transformation.</p>
+                    <ul class="space-y-2 text-gray-700 mb-4 font-semibold">
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#10003;</span> Everything in Standard, PLUS:</li>
+                    </ul>
+                    <ul class="space-y-2 text-gray-700 flex-grow">
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#10003;</span> Hand-wipe all baseboards</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#10003;</span> Hand-wipe door frames</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#10003;</span> Hand-wipe window sills</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#1m0003;</span> Wipe cabinet exteriors</li>
+                        <li class="flex items-start"><span class="text-teal-500 mr-2">&#10003;</span> Extra scrub on tile/grout</li>
+                    </ul>
+                </div>
+
+                <!-- Move-Out Clean Card -->
+                <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                    <h4 class="text-2xl font-bold text-blue-700 mb-4">The Move-Out Clean</h4>
+                    <p class="text-gray-600 mb-4 italic">Your "empty home" special.</p>
+                    <ul class="space-y-2 text-gray-700 mb-4 font-semibold">
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> Everything in Deep, PLUS:</li>
+                    </ul>
+                    <ul class="space-y-2 text-gray-700 flex-grow">
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> **For Empty Homes Only**</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> Inside all cabinets & drawers</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> Inside all closets</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> Inside the oven</li>
+                        <li class="flex items-start"><span class="text-blue-500 mr-2">&#10003;</span> Inside the refrigerator</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Find Your Price Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8">Find Your Price</h3>
+            
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <!-- Responsive Table Wrapper -->
+                <div class="table-responsive">
+                    <table class="w-full text-left">
+                        <!-- Table Header -->
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="p-4 text-sm font-semibold text-gray-600 uppercase tracking-wider">Home Size (Approx. Sq. Ft.)</th>
+                                <th class="p-4 text-sm font-semibold text-green-700 uppercase tracking-wider text-center">Standard Clean</th>
+                                <th class="p-4 text-sm font-semibold text-teal-700 uppercase tracking-wider text-center">Deep Clean</th>
+                                <th class="p-4 text-sm font-semibold text-blue-700 uppercase tracking-wider text-center">Move-In / Move-Out</th>
+                            </tr>
+                        </thead>
+                        <!-- Table Body -->
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">Apartment / &lt; 1,000 sq. ft.</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$125</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$195</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$275</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">1,001 - 1,500 sq. ft.</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$140</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$240</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$320</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">1,501 - 2,000 sq. ft.</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$165</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$290</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$380</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">2,001 - 2,500 sq. ft.</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$190</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$345</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$450</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">2,501 - 3,000 sq. ft.</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$220</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$400</td>
+                                <td class="p-4 font-medium text-gray-700 text-center">$525</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-medium text-gray-900">3,000+ sq. ft.</td>
+                                <td colspan="3" class="p-4 font-medium text-gray-700 text-center italic">Please Call for a Custom Quote</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Disclaimer Text -->
+            <p class="text-center text-sm text-gray-500 mt-4">
+                Prices listed are "Starting At" rates for a one-time service. Final quotes may vary based on your home's condition.
+            </p>
+            <p class="text-center text-md font-semibold text-green-700 mt-2">
+                We give awesome discounts for weekly, bi-weekly, and monthly clients. Just ask!
+            </p>
+        </section>
+
+        <!-- A La Carte Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-center text-gray-900 mb-8">Customize Your Clean (A La Carte Add-Ons)</h3>
+            <p class="text-center text-gray-600 mb-6 max-w-xl mx-auto">Add these services to any Standard or Deep Clean package. (Note: Oven & Fridge are already included in the Move-Out Clean!)</p>
+            
+            <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+                <table class="w-full">
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="p-4 font-medium text-gray-900">Inside the Refrigerator</td>
+                            <td class="p-4 font-medium text-gray-700 text-right">+ $30</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-900">Inside the Oven</td>
+                            <td class="p-4 font-medium text-gray-700 text-right">+ $35</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-900">Interior Windows (reachable panes)</td>
+                            <td class="p-4 font-medium text-gray-700 text-right">+ $45</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-900">Sweep Garage or Porch</td>
+                            <td class="p-4 font-medium text-gray-700 text-right">+ $25</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-medium text-gray-900">Laundry (per load, wash, dry & fold)</td>
+                            <td class="p-4 font-medium text-gray-700 text-right">+ $20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Call to Action Footer -->
+        <footer class="bg-green-700 text-white p-8 sm:p-12 rounded-lg text-center">
+            <h3 class="text-3xl font-bold mb-4">Ready to Reclaim Your Time?</h3>
+            <p class="text-lg text-green-100 mb-6 max-w-lg mx-auto">
+                We’re a local Savannah business, fully insured, and ready to make your home shine.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="tel:YOUR-PHONE-NUMBER" class="bg-white text-green-700 font-bold py-3 px-6 rounded-lg text-lg hover:bg-gray-100 transition duration-300">
+                    Call: (Your Phone)
+                </a>
+                <a href="mailto:YOUR-EMAIL" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-lg hover:bg-green-500 transition duration-300">
+                    Email: (Your Email)
+                </a>
+            </div>
+        </footer>
+
+    </div> <!-- /End Main Container -->
+
+    <!-- NEW: Calculator JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all the elements we need
+            const homeSizeSelect = document.getElementById('homeSize');
+            const packageRadios = document.querySelectorAll('input[name="packageType"]');
+            const addonCheckboxes = document.querySelectorAll('.addon');
+            const totalDisplay = document.getElementById('totalEstimateDisplay');
+            const customQuoteMessage = document.getElementById('customQuoteMessage');
+            
+            // Get specific add-ons for the move-out logic
+            const addonFridge = document.getElementById('addonFridge');
+            const addonOven = document.getElementById('addonOven');
+
+            function calculateTotal() {
+                // 1. Get Base Price from Home Size and Package
+                const selectedSizeOption = homeSizeSelect.options[homeSizeSelect.selectedIndex];
+                const sizeData = JSON.parse(selectedSizeOption.value);
+                const isCustomQuote = selectedSizeOption.dataset.custom === 'true';
+                
+                if (isCustomQuote) {
+                    totalDisplay.classList.add('hidden');
+                    customQuoteMessage.classList.remove('hidden');
+                    return; // Stop calculation
+                } else {
+                    totalDisplay.classList.remove('hidden');
+                    customQuoteMessage.classList.add('hidden');
+                }
+
+                const selectedPackage = document.querySelector('input[name="packageType"]:checked').value;
+                let basePrice = sizeData[selectedPackage];
+
+                // 2. Get Add-On Total
+                let addonTotal = 0;
+                addonCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        addonTotal += parseInt(checkbox.value, 10);
+                    }
+                });
+
+                // 3. Calculate Final Total
+                const total = basePrice + addonTotal;
+
+                // 4. Update the display
+                totalDisplay.textContent = `$${total}`;
+            }
+
+            function handlePackageChange() {
+                const isMoveOut = document.getElementById('pkgMoveOut').checked;
+                
+                // Disable and uncheck fridge/oven if move-out is selected (since it's included)
+                addonFridge.disabled = isMoveOut;
+                addonOven.disabled = isMoveOut;
+                
+                if (isMoveOut) {
+                    addonFridge.checked = false;
+                    addonOven.checked = false;
+                    
+                    // Visually show they are disabled
+                    addonFridge.parentElement.classList.add('opacity-50', 'cursor-not-allowed');
+                    addonOven.parentElement.classList.add('opacity-50', 'cursor-not-allowed');
+                } else {
+                    // Re-enable them
+                    addonFridge.parentElement.classList.remove('opacity-50', 'cursor-not-allowed');
+                    addonOven.parentElement.classList.remove('opacity-50', 'cursor-not-allowed');
+                }
+                
+                calculateTotal(); // Recalculate after state change
+            }
+
+            // --- Attach Event Listeners ---
+            homeSizeSelect.addEventListener('change', calculateTotal);
+            addonCheckboxes.forEach(checkbox => checkbox.addEventListener('change', calculateTotal));
+            packageRadios.forEach(radio => radio.addEventListener('change', handlePackageChange));
+
+            // --- Initial Setup ---
+            // Run on page load to set the default price and check for move-out
+            handlePackageChange(); 
+        });
+    </script>
+    <!-- END: Calculator JavaScript -->
+
+</body>
+</html>
