@@ -151,19 +151,19 @@
                 Your estimate is ready! Now, let's book a quick walkthrough. This helps us confirm the details and give you a final, locked-in price.
             </p>
             
-            <!-- Calendly inline widget begin -->
             <!-- 
-                This div is now controlled by the JavaScript below.
-                The script will automatically add the quote details to the data-url.
+                This div is now the container for the Calendly widget.
+                The script below will manually create the widget inside this div.
+                We removed the class and data-url from here.
             -->
             <div 
                 id="calendly-widget" 
-                class="calendly-inline-widget" 
-                data-url="https://calendly.com/thinkgallery1/new-meeting" 
                 style="min-width:320px;height:700px;"
             ></div>
-            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-            <!-- Calendly inline widget end -->
+            <!-- 
+                We removed the script tag from here. 
+                We will now load it manually in our script below.
+            -->
         </section>
 
 
@@ -332,6 +332,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Utility to load scripts ---
+            function loadScript(src, callback) {
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = src;
+                script.async = true;
+                script.onload = callback;
+                document.head.appendChild(script);
+            }
+
             // Get all the elements we need
             const homeSizeSelect = document.getElementById('homeSize');
             const packageRadios = document.querySelectorAll('input[name="packageType"]');
@@ -339,17 +350,43 @@
             const totalDisplay = document.getElementById('totalEstimateDisplay');
             const customQuoteMessage = document.getElementById('customQuoteMessage');
             
-            // --- Get the Calendly widget ---
-            const calendlyWidget = document.getElementById('calendly-widget');
+            // --- Get the Calendly widget container ---
+            const calendlyWidgetContainer = document.getElementById('calendly-widget');
             
-            // --- Set your base Calendly URL (MUST UPDATE THIS) ---
-            // This MUST be the link to your "Leaflee Clean Quote Visit" event
+            // --- Set your base Calendly URL (This is correct) ---
             const baseCalendlyUrl = "https://calendly.com/thinkgallery1/new-meeting";
 
             // Get specific add-ons for the move-out logic
             const addonFridge = document.getElementById('addonFridge');
             const addonOven = document.getElementById('addonOven');
             
+
+            // --- NEW: This function reloads the Calendly widget ---
+            function updateCalendlyWidget(quoteSummary) {
+                // 1. Create the new URL with pre-filled data
+                let prefillUrl = baseCalendlyUrl;
+                if (quoteSummary) {
+                    // a1= specifies the *first* custom question
+                    prefillUrl = `${baseCalendlyUrl}?a1=${encodeURIComponent(quoteSummary)}`;
+                }
+
+                // 2. Clear the container of the old widget
+                calendlyWidgetContainer.innerHTML = ''; 
+
+                // 3. Manually re-initialize the widget using Calendly's API
+                // This is the correct way to reload it with new data
+                if (typeof Calendly !== 'undefined') {
+                    Calendly.initInlineWidget({
+                        url: prefillUrl,
+                        parentElement: calendlyWidgetContainer
+                    });
+                } else {
+                    // Fallback just in case script is slow (should only happen on first load)
+                    console.log("Calendly object not found, setting data-url as fallback.");
+                }
+            }
+
+
             function calculateTotal() {
                 // 1. Get Base Price from Home Size and Package
                 const selectedPackage = document.querySelector('input[name="packageType"]:checked').value;
@@ -381,12 +418,10 @@
                 // 3. Calculate Final Total
                 const total = basePrice + addonTotal;
 
-                // --- NEW: This is the magic part ---
                 // We will build a text summary for Calendly
                 let quoteSummary = "";
-                let newCalendlyUrl = baseCalendlyUrl; // Start with the base URL
 
-                // 4. Update the display AND Calendly data
+                // 4. Update the display
                 if (isCustomQuote) {
                     totalDisplay.classList.add('hidden');
                     customQuoteMessage.classList.remove('hidden');
@@ -405,12 +440,8 @@
                     quoteSummary = `Quote Request For:\nSize: ${sizeText}\nPackage: ${packageText}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nEstimated Total: $${total}`;
                 }
 
-                // 4c. Update the Calendly widget URL to pre-fill the data
-                // This passes the data into Calendly's first custom question field ("a1")
-                // The widget's own script will detect this change and reload the iframe
-                newCalendlyUrl = `${baseCalendlyUrl}?a1=${encodeURIComponent(quoteSummary)}`;
-                calendlyWidget.setAttribute('data-url', newCalendlyUrl);
-                
+                // 4c. Update the Calendly widget by re-initializing it
+                updateCalendlyWidget(quoteSummary);
             }
 
             function handlePackageChange() {
@@ -446,8 +477,13 @@
                 radio.addEventListener('change', handlePackageChange);
             });
 
-            // Run on initial load
-            handlePackageChange(); // This will also call calculateTotal()
+            // --- Initial Load ---
+            // We load the Calendly script first.
+            // Once it's loaded, we run our initial calculation.
+            loadScript("https://assets.calendly.com/assets/external/widget.js", () => {
+                // Now `Calendly` is defined and we can run the first calculation
+                handlePackageChange(); 
+            });
         });
     </script>
 </body>
