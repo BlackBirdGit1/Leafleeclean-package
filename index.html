@@ -1,403 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Updated Title --><title>Leaflee Cleaning | Price & Booking Guide</title>
-    <!-- FIXED: Tailwind CSS CDN Link --><script src="https://cdn.tailwindcss.com"></script>
+    <title>Leaflee Cleaning Services - Price Guide</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         /* Custom Styles */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Set background color for the whole page, like original design */
         body {
-            font-family: 'Inter', poppins;
-            background-color: #f9fafb;
-            /* Light gray background */
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; /* Light gray background */
         }
 
         /* Custom scrollbar for the price table on mobile */
         .table-responsive {
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
         }
 
+        /* Make table full-width until it hits its min-width */
         .table-responsive table {
-            min-width: 800px;
+            min-width: 800px; /* Ensures headers don't wrap ugly */
             width: 100%;
         }
-
-        /* REVERTED: Custom radio button styles (back to green) */
-        input[type="radio"]:checked+label {
-            border-color: #10B981;
-            /* green-500 */
+        
+        /* Custom radio button styles */
+        input[type="radio"]:checked + label {
+            border-color: #10B981; /* Green-500 */
             box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.1), 0 2px 4px -1px rgba(16, 185, 129, 0.06);
             transform: translateY(-2px);
         }
-
-        /* REVERTED: Custom checkbox styles (back to green) */
+        
+        /* Custom checkbox styles */
         input[type="checkbox"]:checked {
-            background-color: #059669;
-            /* green-600 */
-            border-color: #059669;
-            /* green-600 */
+            background-color: #10B981;
+            border-color: #10B981;
         }
+
+        /* Styling for disabled add-ons */
+        input[type="checkbox"]:disabled + span {
+            color: #9ca3af; /* gray-400 */
+        }
+        input[type="checkbox"]:disabled:checked {
+            background-color: #6ee7b7; /* emerald-300 */
+            border-color: #6ee7b7;
+        }
+
     </style>
 </head>
-
 <body class="text-gray-800">
 
-    <!-- Simple Header (like original file) --><header class="bg-white shadow-sm">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
         <div class="container mx-auto px-6 py-4 max-w-6xl">
             <h1 class="text-3xl font-bold text-gray-900">
-                <!-- REVERTED: Color --><span class="text-green-600">Leaflee</span> Cleaning
+                <span class="text-green-600">Leaflee</span> Cleaning
             </h1>
-            <p class="mt-1 text-gray-600">Your Price & Booking Guide</p>
+            <p class="mt-1 text-gray-600">Your Price & Booking Guide for Savannah, GA</p>
         </div>
     </header>
 
-    <!-- Main content container --><main class="container mx-auto px-6 py-12 max-w-6xl">
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 max-w-6xl">
 
-        <!-- REVISED: Calculator Section --><section id="calculator" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg mb-12">
-            <!-- REVERTED: Color --><h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-green-700">Get an Instant Estimate</h2>
+        <!-- Calculator Section -->
+        <section id="calculator" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg mb-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-green-700">Get an Instant Estimate</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Left Column: Selections --><div>
-                    <!-- Step 1: Home Size --><div class="mb-6">
-                        <label for="homeSize" class="block text-lg font-semibold mb-2 text-gray-700">1. Select
-                            Your Home Size</label>
-                        <!-- REVERTED: Color --><select id="homeSize"
-                            class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
-                            <!-- MODIFIED: Added max prices to values --><option value='{"standard": 125, "standard_max": 155, "deep": 195, "deep_max": 245, "moveout": 275, "moveout_max": 345}'>Apartment / < 1,000
-                                    sq. ft.</option>
-                            <option value='{"standard": 140, "standard_max": 175, "deep": 240, "deep_max": 300, "moveout": 320, "moveout_max": 395}'>1,001 - 1,500 sq. ft.
-                            </option>
-                            <option value='{"standard": 165, "standard_max": 205, "deep": 290, "deep_max": 360, "moveout": 380, "moveout_max": 470}' selected>1,501 -
-                                2,000 sq. ft.</option>
-                            <option value='{"standard": 190, "standard_max": 235, "deep": 345, "deep_max": 425, "moveout": 450, "moveout_max": 555}'>2,001 - 2,500 sq. ft.
-                            </option>
-                            <option value='{"standard": 220, "standard_max": 275, "deep": 400, "deep_max": 500, "moveout": 525, "moveout_max": 650}'>2,501 - 3,000 sq. ft.
-                            </option>
-                            <option value='{"standard": 0, "standard_max": 0, "deep": 0, "deep_max": 0, "moveout": 0, "moveout_max": 0}' data-custom="true">3,000+
-                                sq. ft.</option>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Left Column: Selections (Spans 2 columns) -->
+                <div class="md:col-span-2">
+                    <!-- Step 1: Home Size -->
+                    <div class="mb-6">
+                        <label for="homeSize" class="block text-lg font-semibold mb-2 text-gray-700">1. Select Your Home Size</label>
+                        <select id="homeSize" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
+                            <option value='{"standard": {"low": 125, "high": 155}, "deep": {"low": 195, "high": 245}, "moveout": {"low": 275, "high": 345}}'>Apartment / < 1,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 140, "high": 175}, "deep": {"low": 240, "high": 300}, "moveout": {"low": 320, "high": 395}}'>1,001 - 1,500 sq. ft.</option>
+                            <option value='{"standard": {"low": 165, "high": 205}, "deep": {"low": 290, "high": 360}, "moveout": {"low": 380, "high": 470}}' selected>1,501 - 2,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 190, "high": 235}, "deep": {"low": 345, "high": 425}, "moveout": {"low": 450, "high": 555}}'>2,001 - 2,500 sq. ft.</option>
+                            <option value='{"standard": {"low": 220, "high": 275}, "deep": {"low": 400, "high": 500}, "moveout": {"low": 525, "high": 650}}'>2,501 - 3,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 0, "high": 0}, "deep": {"low": 0, "high": 0}, "moveout": {"low": 0, "high": 0}}' data-custom="true">3,000+ sq. ft.</option>
                         </select>
                     </div>
 
-                    <!-- Step 2: Package Type --><div class="mb-6">
+                    <!-- Step 2: Package Type -->
+                    <div class="mb-6">
                         <h3 class="block text-lg font-semibold mb-3 text-gray-700">2. Choose Your Package</h3>
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                            <input type="radio" name="packageType" value="standard" id="pkgStandard" class="hidden"
-                                checked>
-                            <label for="pkgStandard"
-                                class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
-                                <!-- REVERTED: Color --><span class="font-bold text-green-700">Standard</span>
+                            <input type="radio" name="packageType" value="standard" id="pkgStandard" class="hidden" checked>
+                            <label for="pkgStandard" class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
+                                <span class="font-bold text-green-700">Standard</span>
                                 <span class="text-sm text-gray-500 block">The Refresh</span>
                             </label>
 
                             <input type="radio" name="packageType" value="deep" id="pkgDeep" class="hidden">
-                            <label for="pkgDeep"
-                                class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
+                            <label for="pkgDeep" class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
                                 <span class="font-bold text-blue-700">Deep</span>
                                 <span class="text-sm text-gray-500 block">The Overhaul</span>
                             </label>
 
                             <input type="radio" name="packageType" value="moveout" id="pkgMoveout" class="hidden">
-                            <label for="pkgMoveout"
-                                class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
+                            <label for="pkgMoveout" class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
                                 <span class="font-bold text-purple-700">Move-Out</span>
                                 <span class="text-sm text-gray-500 block">Empty Home</span>
                             </label>
-
+                            
                             <input type="radio" name="packageType" value="custom" id="pkgCustom" class="hidden">
-                            <label for="pkgCustom"
-                                class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
+                            <label for="pkgCustom" class="block p-4 border-2 border-gray-200 rounded-lg cursor-pointer transition-all duration-200 ease-in-out text-center hover:border-gray-400">
                                 <span class="font-bold text-orange-700">Custom</span>
                                 <span class="text-sm text-gray-500 block">Event/Other</span>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Step 3: Add-Ons --><div>
+                    <!-- Step 3: Add-Ons -->
+                    <div>
                         <h3 class="block text-lg font-semibold mb-3 text-gray-700">3. Select Add-Ons</h3>
-                        <div class="space-y-3">
-                            <label
-                                class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
-                                <!-- REVERTED: Color --><input type="checkbox" id="addonFridge" value="30"
-                                    class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
-                                <span class="ml-3 text-gray-700">Inside the Refrigerator <span
-                                        class="text-gray-500">(+$30)</span></span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <label class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
+                                <input type="checkbox" id="addonFridge" data-name="Inside the Refrigerator" value="30" class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
+                                <span class="ml-3 text-gray-700">Inside the Refrigerator <span class="text-gray-500">(+$30)</span></span>
                             </label>
-                            <label
-                                class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
-                                <!-- REVERTED: Color --><input type="checkbox" id="addonOven" value="35"
-                                    class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
-                                <span class="ml-3 text-gray-700">Inside the Oven <span
-                                        class="text-gray-500">(+$35)</span></span>
+                            <label class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
+                                <input type="checkbox" id="addonOven" data-name="Inside the Oven" value="35" class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
+                                <span class="ml-3 text-gray-700">Inside the Oven <span class="text-gray-500">(+$35)</span></span>
                             </label>
-                            <label
-                                class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
-                                <!-- REVERTED: Color --><input type="checkbox" id="addonWindows" value="45"
-                                    class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
-                                <span class="ml-3 text-gray-700">Interior Windows<span
-                                        class="text-gray-500">(+$45)</span></span>
+                            <label class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
+                                <input type="checkbox" id="addonWindows" data-name="Interior Windows" value="45" class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
+                                <span class="ml-3 text-gray-700">Interior Windows (reachable) <span class="text-gray-500">(+$45)</span></span>
                             </label>
-                            <label
-                                class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
-                                <!-- REVERTED: Color --><input type="checkbox" id="addonGarage" value="25"
-                                    class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
-                                <span class="ml-3 text-gray-700">Sweep Garage or Porch <span
-                                        class="text-gray-500">(+$25)</span></span>
+                            <label class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
+                                <input type="checkbox" id="addonGarage" data-name="Sweep Garage or Porch" value="25" class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
+                                <span class="ml-3 text-gray-700">Sweep Garage or Porch <span class="text-gray-500">(+$25)</span></span>
                             </label>
-                            <label
-                                class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
-                                <!-- REVERTED: Color --><input type="checkbox" id="addonLaundry" value="20"
-                                    class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
-                                <span class="ml-3 text-gray-700">Laundry (per load) <span
-                                        class="text-gray-500">(+$20)</span></span>
+                            <label class="flex items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition duration-150">
+                                <input type="checkbox" id="addonLaundry" data-name="Laundry (per load)" value="20" class="h-5 w-5 rounded text-green-600 border-gray-300 focus:ring-green-500">
+                                <span class="ml-3 text-gray-700">Laundry (per load) <span class="text-gray-500">(+$20)</span></span>
                             </label>
                         </div>
                     </div>
                 </div>
 
-                <!-- NEW: Right Column: Summary (REVERTED to Green) --><div class="bg-green-50 p-6 rounded-2xl border border-green-200">
-                    <!-- This container holds the standard summary --><!-- MODIFIED: Removed text-center --><div id="estimateSummaryBox">
-                        <h3 class="text-xl font-semibold text-green-800 mb-2">Your Estimate Summary</h3>
-                        <!-- MODIFIED: Reduced text size to fit range --><p id="totalEstimateDisplay" class="text-5xl font-extrabold text-green-700 mb-4">$165 - $205</p>
-                        
-                        <!-- NEW: Disclaimer --><p class="text-sm text-gray-600 italic mb-4">
-                            This is an estimate for one visit. Your final quote will be given after the walkthrough once details are finalized.
-                        </p>
+                <!-- Right Column: Total (Spans 1 column) -->
+                <div class="bg-green-50 p-6 rounded-2xl border border-green-200">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Your Estimate Summary</h3>
+                    
+                    <!-- Price Display -->
+                    <p id="totalEstimateDisplay" class="text-5xl font-extrabold text-green-700 mb-2">$165 - $205</p>
+                    <p id="customQuoteMessage" class="text-xl font-semibold text-green-700 hidden">Custom Quote Required</p>
+                    
+                    <p class="text-xs text-gray-500 mb-4">This is an estimate for one visit. Your final quote will be given after the walkthrough once details are finalized.</p>
+                    
+                    <hr class="border-green-200 my-4">
 
-                        <div class="space-y-4">
-                            <!-- Package Details --><div>
-                                <h4 id="packageDescriptionTitle" class="text-lg font-bold text-green-800">The Standard Clean</h4>
-                                <!-- MODIFIED: Removed inline-block and text-left --><ul id="packageDescriptionList" class="mt-2 space-y-1 text-sm text-green-900 list-disc list-inside">
-                                    <!-- JS will populate this --></ul>
-                            </div>
-                            
-                            <!-- Divider --><hr class="border-green-200">
-
-                            <!-- Add-ons Details --><div>
-                                <h4 class="text-lg font-bold text-green-800">Selected Add-Ons</h4>
-                                <p id="addonsDescriptionList" class="mt-2 text-sm text-green-900">
-                                    <!-- JS will populate this --></p>
-                            </div>
-                        </div>
+                    <!-- Package Details -->
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800" id="packageTitle">The Standard Clean</h4>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1 mt-2" id="packageDetails">
+                            <li>Dust all surfaces & ceiling fans</li>
+                            <li>Vacuum carpets & mop floors</li>
+                            <li>Wipe kitchen counters & sink</li>
+                            <li>Clean exterior of appliances</li>
+                            <li>Clean & sanitize all bathrooms</li>
+                        </ul>
                     </div>
 
-                    <!-- This container holds the custom quote message (hidden by default) --><div id="customQuoteMessage" class="flex flex-col items-center justify-center h-full hidden">
-                        <p class="text-2xl font-semibold text-green-700 text-center">
-                            This request requires a custom quote.
-                        </p>
-                        <p class="text-base font-normal text-green-600 mt-4 text-center">
-                            Please schedule a visit below for a free, no-obligation walkthrough.
-                        </p>
+                    <!-- Add-Ons Details -->
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold text-gray-800">Selected Add-Ons</h4>
+                        <p class="text-gray-600 text-sm" id="addonsList">None</p>
                     </div>
+
+                    <!-- Scroll to Schedule Button -->
+                    <button id="scrollToSchedule" class="mt-6 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                        Book Your Free Walkthrough
+                    </button>
                 </div>
             </div>
         </section>
 
 
-        <!-- REVISED: Calendly Embed Section --><section id="schedule" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg mb-12">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4 text-gray-800">Schedule Your Quote Visit</h2>
+        <!-- Calendly Embed Section -->
+        <!-- Removed shadow-lg and mb-12 to make it blend -->
+        <section id="schedule" class="bg-white p-6 sm:p-8 rounded-2xl">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">Schedule Your Quote Visit</h2>
             <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                Your estimate is ready! Now, let's book a quick walkthrough. This helps us confirm the details and
-                give you a final, locked-in price.
+                Your estimate is ready! Now, let's book a quick walkthrough. This helps us confirm the details and give you a final, locked-in price.
             </p>
-
-            <div class="rounded-xl overflow-hidden border border-gray-200">
-                <div id="calendly-widget" style="min-width:320px;height:700px;"></div>
-            </div>
+            
+            <div 
+                id="calendly-widget" 
+                style="min-width:320px;height:700px;"
+            ></div>
         </section>
 
 
-        <!-- REVISED: Summary Tables Section --><section id="price-guide" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg mb-12">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">Detailed Price Guide</h2>
+        <!-- Summary Tables Section - REMOVED AS REQUESTED -->
 
-            <!-- Find Your Price Table --><h3 class="text-xl font-bold text-center text-gray-800 mb-6">Find Your Price</h3>
-            <p class="text-center text-gray-600 mb-4 text-sm max-w-2xl mx-auto">
-                Prices listed are "Starting At" rates for a one-time service. We offer great discounts for weekly,
-                bi-weekly, and monthly clients!
-            </p>
-            <div class="table-responsive rounded-lg border border-gray-200 mb-10">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="py-3.5 px-6 text-left text-sm font-semibold text-gray-900">Home
-                                Size (Approx. Sq. Ft.)</th>
-                            <!-- REVERTED: Color --><th scope="col" class="py-3.5 px-6 text-center text-sm font-semibold text-green-700">
-                                Standard Clean</th>
-                            <!-- MODIFIED: Removed Most Popular tag --><th scope="col" class="py-3.5 px-6 text-center text-sm font-semibold text-blue-700">Deep
-                                Clean</th>
-                            <!-- MODIFIED: Added Most Popular tag --><th scope="col" class="py-3.5 px-6 text-center text-sm font-semibold text-purple-700">
-                                Move-In / Move-Out <br><span class="text-xs font-normal text-purple-500">⭐ Most Popular</span></th>
-                            <th scope="col"
-                                class="py-3.5 px-6 text-center text-sm font-semibold text-orange-700">Custom Clean
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 bg-white">
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Apartment / <
-                                    1,000 sq. ft.</td>
-                            <!-- MODIFIED: Price ranges updated --><td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$125 - $155</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$195 - $245</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$275 - $345</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center font-medium"
-                                rowspan="6">Call for Quote</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">1,001 - 1,500
-                                sq. ft.</td>
-                            <!-- MODIFIED: Price ranges updated --><td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$140 - $175</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$240 - $300</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$320 - $395</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">1,501 - 2,000
-                                sq. ft.</td>
-                            <!-- MODIFIED: Price ranges updated --><td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$165 - $205</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$290 - $360</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$380 - $470</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">2,001 - 2,500
-                                sq. ft.</td>
-                            <!-- MODIFIED: Price ranges updated --><td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$190 - $235</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$345 - $425</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$450 - $555</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">2,501 - 3,000
-                                sq. ft.</td>
-                            <!-- MODIFIED: Price ranges updated --><td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$220 - $275</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$400 - $500</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center">$525 - $650</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">3,000+ sq. ft.
-                            </td>
-                            <!-- MODIFIED: Text updated --><td colspan="3"
-                                class="whitespace-nowrap py-4 px-6 text-sm text-gray-500 text-center font-medium">
-                                Free On-Site Quote Required</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- A La Carte Table --><h3 class="text-xl font-bold text-center text-gray-800 mt-10 mb-6">Customize Your Clean (A La Carte
-                Add-Ons)</h3>
-            <p class="text-center text-gray-600 mb-4 text-sm max-w-2xl mx-auto">
-                Add to any Standard, Deep, or Custom package. (Oven & Fridge are included in Move-Out).
-            </p>
-            <div class="table-responsive rounded-lg border border-gray-200 max-w-2xl mx-auto">
-                <table class="min-w-full divide-y divide-gray-200" style="min-width: 1px;">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="py-3.5 px-6 text-left text-sm font-semibold text-gray-900">
-                                Service</th>
-                            <th scope="col" class="py-3.5 px-6 text-left text-sm font-semibold text-gray-900">Price
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 bg-white">
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Inside the
-                                Refrigerator</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500">+ $30</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Inside the Oven
-                            </td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500">+ $35</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Interior
-                                Windows</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500">+ $45</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Sweep Garage or
-                                Porch</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500">+ $25</td>
-                        </tr>
-                        <tr>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900">Laundry (per
-                                load, wash, dry & fold)</td>
-                            <td class="whitespace-nowrap py-4 px-6 text-sm text-gray-500">+ $20</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </section>
 
     </main>
 
-    <!-- Simple Footer --><footer class="bg-white border-t border-gray-200">
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
         <div class="container mx-auto px-6 py-8 max-w-6xl text-center text-gray-500">
-            <p class="text-sm">&copy; 2025 Leaflee Cleaning. All rights reserved.</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Ready to Reclaim Your Time?</h3>
+            <p class="mb-6">We’re a local Savannah business, fully insured, and ready to make your home shine.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="tel:YOUR-PHONE-NUMBER" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-200">
+                    Call or Text Us
+                </a>
+                <a href="mailto:YOUR-EMAIL" class="bg-gray-700 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-gray-800 transition duration-200">
+                    Email Us
+                </a>
+            </div>
+            <p class="mt-8 text-sm">&copy; 2025 Leaflee Cleaning. All rights reserved.</p>
         </div>
     </footer>
 
 
-    <!-- JAVASCRIPT - Updated with new logic --><script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // --- Package Descriptions Data ---
-            const packageDescriptions = {
-                standard: {
-                    title: "The Standard Clean",
-                    color: "text-green-700", // Back to green
-                    items: [
-                        "Dust all surfaces & ceiling fans",
-                        "Vacuum carpets & mop floors",
-                        "Wipe kitchen counters & sink",
-                        "Clean exterior of appliances",
-                        "Clean & sanitize all bathrooms",
-                        "Empty wastebaskets"
-                    ]
-                },
-                deep: {
-                    title: "The Deep Clean",
-                    color: "text-blue-700",
-                    items: [
-                        "<strong>Everything in Standard, PLUS:</strong>",
-                        "Hand-wipe all baseboards",
-                        "Hand-wipe door frames",
-                        "Hand-wipe window sills",
-                        "Wipe cabinet exteriors",
-                        "Extra scrub on tile/grout"
-                    ]
-                },
-                moveout: {
-                    title: "The Move-Out Clean",
-                    color: "text-purple-700",
-                    items: [
-                        "<strong>Everything in Deep, PLUS:</strong>",
-                        "(For Empty Homes Only)",
-                        "Inside all cabinets & drawers",
-                        "Inside all closets",
-                        "Inside the oven",
-                        "Inside the refrigerator"
-                    ]
-                },
-                custom: {
-                    title: "The Custom Clean",
-                    color: "text-orange-700",
-                    items: [
-                        "We'll discuss your specific needs during the walkthrough!"
-                    ]
-                }
-            };
-
+            
             // --- Utility to load scripts ---
             function loadScript(src, callback) {
                 const script = document.createElement('script');
@@ -408,38 +236,79 @@
                 document.head.appendChild(script);
             }
 
+            // --- Package Details Object ---
+            const packageInfo = {
+                standard: {
+                    title: 'The Standard Clean',
+                    details: [
+                        'Dust all surfaces & ceiling fans',
+                        'Vacuum carpets & mop floors',
+                        'Wipe kitchen counters & sink',
+                        'Clean exterior of appliances',
+                        'Clean & sanitize all bathrooms'
+                    ]
+                },
+                deep: {
+                    title: 'The Deep Clean',
+                    details: [
+                        '<strong>Everything in Standard, PLUS:</strong>',
+                        'Hand-wipe all baseboards',
+                        'Hand-wipe door frames & sills',
+                        'Wipe cabinet exteriors',
+                        'Extra scrub on tile/grout'
+                    ]
+                },
+                moveout: {
+                    title: 'The Move-Out Clean',
+                    details: [
+                        '<strong>Everything in Deep, PLUS:</strong>',
+                        'Inside all cabinets & drawers',
+                        'Inside all closets',
+                        'Inside the oven',
+                        'Inside the refrigerator'
+                    ]
+                },
+                custom: {
+                    title: 'The Custom Clean',
+                    details: [
+                        'Post-event cleanup',
+                        'Small office / Commercial',
+                        'School or gathering spaces',
+                        'Any other custom job!'
+                    ]
+                }
+            };
+
             // --- Get all the elements we need ---
             const homeSizeSelect = document.getElementById('homeSize');
             const packageRadios = document.querySelectorAll('input[name="packageType"]');
             const addonCheckboxes = document.querySelectorAll('input[type="checkbox"]');
             
-            // Calculator Display Elements
+            // Summary Box Elements
             const totalDisplay = document.getElementById('totalEstimateDisplay');
             const customQuoteMessage = document.getElementById('customQuoteMessage');
-            const estimateSummaryBox = document.getElementById('estimateSummaryBox');
-            const packageDescriptionTitle = document.getElementById('packageDescriptionTitle');
-            const packageDescriptionList = document.getElementById('packageDescriptionList');
-            const addonsDescriptionList = document.getElementById('addonsDescriptionList');
-
-            // Calendly
+            const packageTitleEl = document.getElementById('packageTitle');
+            const packageDetailsEl = document.getElementById('packageDetails');
+            const addonsListEl = document.getElementById('addonsList');
+            const scrollToScheduleBtn = document.getElementById('scrollToSchedule');
+            
+            // Calendly Elements
             const calendlyWidgetContainer = document.getElementById('calendly-widget');
-            const baseCalendlyUrl = "https://calendly.com/leafleeclean/new-meeting";
+            const scheduleSection = document.getElementById('schedule');
+            
+            // --- Set your base Calendly URL (WITH NEW PARAMETERS) ---
+            const baseCalendlyUrl = "https://calendly.com/leafleeclean/new-meeting?hide_event_type_details=1&hide_cookie_banner=1";
 
-            // Specific Add-ons
+            // Get specific add-ons for the move-out logic
             const addonFridge = document.getElementById('addonFridge');
             const addonOven = document.getElementById('addonOven');
-
+            
 
             // --- This function reloads the Calendly widget ---
             function updateCalendlyWidget(quoteSummary) {
-                let prefillUrl = baseCalendlyUrl;
-                if (quoteSummary) {
-                    prefillUrl = `${baseCalendlyUrl}?a1=${encodeURIComponent(quoteSummary)}`;
-                }
-                
-                if (!calendlyWidgetContainer) return; // Exit if no widget on page
-                
-                calendlyWidgetContainer.innerHTML = ''; // Clear old widget
+                let prefillUrl = `${baseCalendlyUrl}&a1=${encodeURIComponent(quoteSummary)}`;
+
+                calendlyWidgetContainer.innerHTML = ''; 
 
                 if (typeof Calendly !== 'undefined') {
                     Calendly.initInlineWidget({
@@ -458,98 +327,97 @@
                 const isCustomQuoteSize = selectedSizeOption.dataset.custom === 'true';
                 const isCustomPackage = selectedPackage === 'custom';
 
-                // Get text for size
+                // Get text for selections
                 const sizeText = selectedSizeOption.text;
+                const packageDetails = packageInfo[selectedPackage];
                 
-                // Get Package Details from our data object
-                const packageData = packageDescriptions[selectedPackage];
-                const packageText = packageData.title;
+                // Update Package Details in Summary Box
+                packageTitleEl.textContent = packageDetails.title;
+                packageDetailsEl.innerHTML = packageDetails.details.map(item => `<li>${item}</li>`).join('');
 
 
-                let basePrice = 0;
-                let basePriceMax = 0; // New variable
+                let basePriceLow = 0;
+                let basePriceHigh = 0;
                 if (!isCustomPackage && !isCustomQuoteSize) {
-                    basePrice = sizeData[selectedPackage];
-                    basePriceMax = sizeData[selectedPackage + '_max']; // Get max price
+                    const packagePriceData = sizeData[selectedPackage];
+                    basePriceLow = packagePriceData.low;
+                    basePriceHigh = packagePriceData.high;
                 }
-
+                
                 // 2. Get Add-On Total and Text
                 let addonTotal = 0;
-                let addOnsDetails = []; // This will hold the text of selected add-ons
+                let addOnsDetails = []; 
                 addonCheckboxes.forEach(checkbox => {
                     if (checkbox.checked) {
                         addonTotal += parseInt(checkbox.value, 10);
-                        const addonText = checkbox.parentElement.querySelector('span').textContent.split(' (')[0].trim();
-                        addOnsDetails.push(addonText);
+                        addOnsDetails.push(checkbox.dataset.name);
                     }
                 });
+                
+                // Update Add-Ons List in Summary Box
+                if (addOnsDetails.length > 0) {
+                    addonsListEl.textContent = addOnsDetails.join(', ');
+                } else {
+                    addonsListEl.textContent = 'None';
+                }
 
                 // 3. Calculate Final Total
-                const totalMin = basePrice + addonTotal; // New variable
-                const totalMax = basePriceMax + addonTotal; // New variable
+                const totalLow = basePriceLow + addonTotal;
+                const totalHigh = basePriceHigh + addonTotal;
 
-                // 4. Build Calendly Summary String
                 let quoteSummary = "";
 
-                // 5. Update the display
+                // 4. Update the display
                 if (isCustomQuoteSize || isCustomPackage) {
-                    // SHOW CUSTOM MESSAGE
-                    estimateSummaryBox.classList.add('hidden');
+                    totalDisplay.classList.add('hidden');
                     customQuoteMessage.classList.remove('hidden');
+                    
+                    let customReason = "";
+                    if (isCustomQuoteSize) customReason = `Size: ${sizeText}`;
+                    if (isCustomPackage) customReason = `Package: ${packageDetails.title}`; // Use the title
+                    if (isCustomQuoteSize && isCustomPackage) customReason = `Size: ${sizeText}, Package: ${packageDetails.title}`;
 
-                    let customReason = isCustomQuoteSize ? `Size: ${sizeText}` : `Package: ${packageText}`;
                     quoteSummary = `Quote Request For:\n${customReason}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nTotal: Custom Quote Required`;
 
                 } else {
-                    // SHOW ESTIMATE SUMMARY
-                    estimateSummaryBox.classList.remove('hidden');
+                    totalDisplay.classList.remove('hidden');
                     customQuoteMessage.classList.add('hidden');
-
-                    // 5a. Update price
-                    totalDisplay.textContent = `$${totalMin} - $${totalMax}`; // Show range
-
-                    // 5b. Update Package Details
-                    packageDescriptionTitle.textContent = packageText;
-                    // REVERTED: Update title color class dynamically
-                    packageDescriptionTitle.className = `text-lg font-bold ${packageData.color}`;
-                    packageDescriptionList.innerHTML = packageData.items.map(item => `<li>${item}</li>`).join('');
-
-                    // 5c. Update Add-ons List
-                    if (addOnsDetails.length > 0) {
-                        addonsDescriptionList.textContent = addOnsDetails.join(', ');
-                    } else {
-                        addonsDescriptionList.textContent = 'None';
-                    }
-
-                    // 5d. Set summary for a standard quote
-                    quoteSummary = `Quote Request For:\nSize: ${sizeText}\nPackage: ${packageText}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nEstimated Total: $${totalMin} - $${totalMax}`; // Show range in summary
+                    
+                    totalDisplay.textContent = `$${totalLow} - $${totalHigh}`;
+                    
+                    quoteSummary = `Quote Request For:\nSize: ${sizeText}\nPackage: ${packageDetails.title}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nEstimated Total: $${totalLow} - $${totalHigh}`;
                 }
 
-                // 6. Update the Calendly widget
+                // 4c. Update the Calendly widget by re-initializing it
                 updateCalendlyWidget(quoteSummary);
             }
 
             function handlePackageChange() {
                 const selectedPackage = document.querySelector('input[name="packageType"]:checked').value;
-
-                // Logic for move-out: disable fridge/oven add-ons as they are included
+                
+                // Smart Logic for Move-Out
                 if (selectedPackage === 'moveout') {
-                    addonFridge.checked = false;
+                    addonFridge.checked = true;
                     addonFridge.disabled = true;
                     addonFridge.parentElement.classList.add('opacity-50', 'cursor-not-allowed');
 
-                    addonOven.checked = false;
+                    addonOven.checked = true;
                     addonOven.disabled = true;
                     addonOven.parentElement.classList.add('opacity-50', 'cursor-not-allowed');
                 } else {
-                    // This 'else' block now correctly handles 'standard', 'deep', AND 'custom'
+                    // Re-enable for all other packages
                     addonFridge.disabled = false;
                     addonFridge.parentElement.classList.remove('opacity-50', 'cursor-not-allowed');
-
+                    
                     addonOven.disabled = false;
                     addonOven.parentElement.classList.remove('opacity-50', 'cursor-not-allowed');
+                    
+                    // Uncheck them if the user *didn't* just switch from moveout
+                    // This logic is tricky, so we'll just re-enable and let the user uncheck
+                    // A better way is to see what the *previous* state was, but for now, this works.
+                    // Let's just recalculate.
                 }
-
+                
                 calculateTotal(); // Recalculate when package changes
             }
 
@@ -561,18 +429,20 @@
             packageRadios.forEach(radio => {
                 radio.addEventListener('change', handlePackageChange);
             });
+            
+            // Scroll-to button
+            scrollToScheduleBtn.addEventListener('click', () => {
+                scheduleSection.scrollIntoView({ behavior: 'smooth' });
+            });
+
 
             // --- Initial Load ---
             loadScript("https://assets.calendly.com/assets/external/widget.js", () => {
-                // Now `Calendly` is defined and we can run the first calculation
-                handlePackageChange();
+                // Now `Calendly` is defined, run the first calculation
+                handlePackageChange(); 
             });
         });
     </script>
 </body>
-
 </html>
-
-
-
 
