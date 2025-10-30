@@ -66,7 +66,7 @@
                 This assumes you've uploaded the logo as 'logo.png' to the root of your repository.
             -->
             <!-- UPDATED: Logo size set to h-28 (7rem), very close to user's "h-30" request -->
-            <img src="logo.png" alt="Leaflee Clean Logo" class="h-28 w-auto">
+            <img src="logo.png" alt="Leaflee Clean Logo" class="h-32 w-auto">
         </div>
     </header>
 
@@ -84,12 +84,13 @@
                     <!-- Step 1: Home Size -->
                     <div class="mb-6">
                         <label for="homeSize" class="block text-lg font-semibold mb-2 text-gray-700">1. Select Your Home Size</label>
+                        <!-- UPDATED: All values changed to match the new spreadsheet data -->
                         <select id="homeSize" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition">
-                            <option value='{"standard": {"low": 125, "high": 155}, "deep": {"low": 195, "high": 245}, "moveout": {"low": 275, "high": 345}}'>Apartment / < 1,000 sq. ft.</option>
-                            <option value='{"standard": {"low": 140, "high": 175}, "deep": {"low": 240, "high": 300}, "moveout": {"low": 320, "high": 395}}'>1,001 - 1,500 sq. ft.</option>
-                            <option value='{"standard": {"low": 165, "high": 205}, "deep": {"low": 290, "high": 360}, "moveout": {"low": 380, "high": 470}}' selected>1,501 - 2,000 sq. ft.</option>
-                            <option value='{"standard": {"low": 190, "high": 235}, "deep": {"low": 345, "high": 425}, "moveout": {"low": 450, "high": 555}}'>2,001 - 2,500 sq. ft.</option>
-                            <option value='{"standard": {"low": 220, "high": 275}, "deep": {"low": 400, "high": 500}, "moveout": {"low": 525, "high": 650}}'>2,501 - 3,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 102, "high": 153}, "deep": {"low": 153, "high": 230}, "moveout": {"low": 204, "high": 306}}'>Apartment / < 1,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 128, "high": 179}, "deep": {"low": 191, "high": 268}, "moveout": {"low": 255, "high": 357}}'>1,001 - 1,500 sq. ft.</option>
+                            <option value='{"standard": {"low": 179, "high": 230}, "deep": {"low": 268, "high": 344}, "moveout": {"low": 357, "high": 459}}' selected>1,501 - 2,000 sq. ft.</option>
+                            <option value='{"standard": {"low": 230, "high": 281}, "deep": {"low": 344, "high": 421}, "moveout": {"low": 459, "high": 561}}'>2,001 - 2,500 sq. ft.</option>
+                            <option value='{"standard": {"low": 281, "high": 332}, "deep": {"low": 421, "high": 497}, "moveout": {"low": 561, "high": 663}}'>2,501 - 3,000 sq. ft.</option>
                             <option value='{"standard": {"low": 0, "high": 0}, "deep": {"low": 0, "high": 0}, "moveout": {"low": 0, "high": 0}}' data-custom="true">3,000+ sq. ft.</option>
                         </select>
                     </div>
@@ -158,7 +159,8 @@
                     
                     <!-- Price Display -->
                     <!-- UPDATED: Made text responsive for mobile -->
-                    <p id="totalEstimateDisplay" class="text-4xl sm:text-5xl font-extrabold text-green-700 mb-2">$165 - $205</p>
+                    <!-- UPDATED: Default price changed to match new spreadsheet data -->
+                    <p id="totalEstimateDisplay" class="text-4xl sm:text-5xl font-extrabold text-green-700 mb-2">$179 - $230</p>
                     <p id="customQuoteMessage" class="text-xl font-semibold text-green-700 hidden">Custom Quote Required</p>
                     
                     <p class="text-xs text-gray-500 mb-4">This is an estimate for one visit. Your final quote will be given after the walkthrough once details are finalized.</p>
