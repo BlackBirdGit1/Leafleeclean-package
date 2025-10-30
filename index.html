@@ -57,15 +57,16 @@
 <body class="text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <!-- UPDATED: Added py-6 for more logo padding, and px-4 sm:px-6 for mobile -->
-        <div class="container mx-auto px-4 sm:px-6 py-6 max-w-6xl">
+    <!-- UPDATED: Set fixed height h-32 (8rem) and removed vertical padding -->
+    <header class="bg-white shadow-sm h-32">
+        <!-- UPDATED: Container is now flex, centers logo, and fills header height -->
+        <div class="container mx-auto px-4 sm:px-6 h-full flex items-center justify-center">
             <!-- 
                 UPDATED: Replaced the H1 and P tags with your logo.
                 This assumes you've uploaded the logo as 'logo.png' to the root of your repository.
             -->
-            <!-- UPDATED: Increased logo height from h-12 to h-16 -->
-            <img src="logo.png" alt="Leaflee Clean Logo" class="h-32 w-auto">
+            <!-- UPDATED: Logo size set to h-28 (7rem), very close to user's "h-30" request -->
+            <img src="logo.png" alt="Leaflee Clean Logo" class="h-28 w-auto">
         </div>
     </header>
 
@@ -448,5 +449,4 @@
     </script>
 </body>
 </html>
-
 
