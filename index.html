@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaflee Cleaning Services - Price Guide</title>
+    <title>Get Your Free Cleaning Estimate &amp; Book | Leaflee Clean</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- UPDATED: Google Font changed to Poppins -->
@@ -66,7 +66,7 @@
                 This assumes you've uploaded the logo as 'logo.png' to the root of your repository.
             -->
             <!-- UPDATED: Logo size set to h-28 (7rem), very close to user's "h-30" request -->
-            <img src="logo.png" alt="Leaflee Clean Logo" class="h-32 w-auto">
+            <img src="logo.png" alt="Leaflee Clean Logo" class="h-36 w-auto">
         </div>
     </header>
 
@@ -76,7 +76,7 @@
 
         <!-- Calculator Section -->
         <section id="calculator" class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg mb-12">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-green-700">Get an Instant Estimate</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-green-700">Step 1: Get Your Instant Estimate</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Left Column: Selections (Spans 2 columns) -->
@@ -163,7 +163,7 @@
                     <p id="totalEstimateDisplay" class="text-4xl sm:text-5xl font-extrabold text-green-700 mb-2">$179 - $230</p>
                     <p id="customQuoteMessage" class="text-xl font-semibold text-green-700 hidden">Custom Quote Required</p>
                     
-                    <p class="text-xs text-gray-500 mb-4">This is an estimate for one visit. Your final quote will be given after the walkthrough once details are finalized.</p>
+                    <p class="text-xs text-gray-500 mb-4">This is a real-time estimate. Your final, locked-in price will be confirmed during your free, no-obligation walkthrough.</p>
                     
                     <hr class="border-green-200 my-4">
 
@@ -186,9 +186,7 @@
                     </div>
 
                     <!-- Scroll to Schedule Button -->
-                    <button id="scrollToSchedule" class="mt-6 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                        Book Your Free Walkthrough
-                    </button>
+                    <button id="scrollToSchedule" class="mt-6 w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">Schedule Your Free Quote Visit</button>
                 </div>
             </div>
         </section>
@@ -197,10 +195,8 @@
         <!-- Calendly Embed Section -->
         <!-- Removed shadow-lg and mb-12 to make it blend -->
         <section id="schedule" class="bg-white p-6 sm:p-8 rounded-2xl">
-            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">Schedule Your Quote Visit</h2>
-            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-                Your estimate is ready! Now, let's book a quick walkthrough. This helps us confirm the details and give you a final, locked-in price.
-            </p>
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-8 text-gray-800">Step 2: Schedule Your Free On-Site Quote</h2>
+            <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Your estimate looks great. Let's lock it in! Book a free, 15-minute walkthrough so we can provide a final, guaranteed quote. No obligations, just a firm price.</p>
             
             <div 
                 id="calendly-widget" 
@@ -219,7 +215,7 @@
         <!-- UPDATED: Added px-4 sm:px-6 for mobile padding -->
         <div class="container mx-auto px-4 sm:px-6 py-8 max-w-6xl text-center text-gray-500">
             <h3 class="text-xl font-semibold text-gray-800 mb-2">Ready to Reclaim Your Time?</h3>
-            <p class="mb-6">We’re a local Savannah business, fully insured, and ready to make your home shine.</p>
+            <p class="mb-6">We’re your local, insured Savannah cleaning professionals, ready to make your home shine.</p>
             <!-- UPDATED: Buttons now stack vertically on mobile (flex-col) and go to horizontal (sm:flex-row) on larger screens -->
             <div class="flex flex-col sm:flex-row justify-center sm:space-x-4 sm:space-y-0 space-y-4">
                 <a href="tel:YOUR-PHONE-NUMBER" class="bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-green-700 transition duration-200 w-full sm:w-auto">
@@ -388,7 +384,7 @@
                     if (isCustomPackage) customReason = `Package: ${packageDetails.title}`; // Use the title
                     if (isCustomQuoteSize && isCustomPackage) customReason = `Size: ${sizeText}, Package: ${packageDetails.title}`;
 
-                    quoteSummary = `Quote Request For:\n${customReason}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nTotal: Custom Quote Required`;
+                    quoteSummary = `Quote Request For:\n${customReason}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nTotal: Free On-Site Quote Required`;
 
                 } else {
                     totalDisplay.classList.remove('hidden');
@@ -396,7 +392,7 @@
                     
                     totalDisplay.textContent = `$${totalLow} - $${totalHigh}`;
                     
-                    quoteSummary = `Quote Request For:\nSize: ${sizeText}\nPackage: ${packageDetails.title}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nEstimated Total: $${totalLow} - $${totalHigh}`;
+                    quoteSummary = `Quote Request For:\nSize: ${sizeText}\nPackage: ${packageDetails.title}\nAdd-ons: ${addOnsDetails.length > 0 ? addOnsDetails.join(', ') : 'None'}\nEst. Price: $${totalLow} - $${totalHigh}`;
                 }
 
                 // 4c. Update the Calendly widget by re-initializing it
